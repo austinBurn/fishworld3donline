@@ -1,9 +1,9 @@
-import { Client, Room } from "colyseus.js";
-import { cli, Options } from "@colyseus/loadtest";
+import { Client } from "colyseus.js";
+import { cli } from "@colyseus/loadtest";
 
-export async function main(options: Options) {
+export async function main(options) {
     const client = new Client(options.endpoint);
-    const room: Room = await client.joinOrCreate(options.roomName, {
+    const room = await client.joinOrCreate(options.roomName, {
         // your join options here...
     });
 

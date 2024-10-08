@@ -1,7 +1,6 @@
 // src/App.js
 import React, { useEffect, useState, useRef } from 'react';
 import { Client } from 'colyseus.js';
-import { Fish, State } from './schema'; // Import the schema classes
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import FishTank from './components/FishTank';

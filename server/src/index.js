@@ -1,5 +1,5 @@
 import { listen } from "@colyseus/tools";
-import appConfig from "./app.config";
+import appConfig from "./app.config.js";
 
 // Listen on port 2567 (or PORT environment variable)
 const port = process.env.PORT || 2567;
