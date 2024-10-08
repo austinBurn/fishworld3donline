@@ -1,9 +1,8 @@
-// server/FishRoom.js
-const { Room } = require('colyseus');
-const { Fish, State } = require('./schema');
+import { Room, Client } from "@colyseus/core";
+import { Fish, State } from "./schema/Schema";
 
-class FishRoom extends Room {
-  onCreate(options) {
+export class FishRoom extends Room<State> {
+  onCreate(options: any) {
     console.log('FishRoom created.');
 
     // Set the initial state
@@ -16,7 +15,7 @@ class FishRoom extends Room {
       fish.x = Math.random() * 10 - 5;
       fish.y = Math.random() * 5 - 2.5;
       fish.z = Math.random() * 5 - 2.5;
-      this.state.fishes[fish.id] = fish; // Add to MapSchema
+      this.state.fishes.set(fish.id, fish);
       console.log(
         `Fish ${fish.id} created at (${fish.x.toFixed(2)}, ${fish.y.toFixed(2)}, ${fish.z.toFixed(2)})`
       );
@@ -26,7 +25,7 @@ class FishRoom extends Room {
     this.setSimulationInterval((deltaTime) => this.update(deltaTime), 50);
   }
 
-  update(deltaTime) {
+  update(deltaTime: number) {
     // Update fish positions
     this.state.fishes.forEach((fish) => {
       // Random movement
@@ -48,11 +47,11 @@ class FishRoom extends Room {
     });
   }
 
-  onJoin(client, options) {
+  onJoin(client: Client, options: any) {
     console.log(`Client ${client.sessionId} joined.`);
   }
 
-  onLeave(client, consented) {
+  onLeave(client: Client, consented: boolean) {
     console.log(`Client ${client.sessionId} left.`);
   }
 
@@ -60,5 +59,3 @@ class FishRoom extends Room {
     console.log('FishRoom disposed.');
   }
 }
-
-module.exports = FishRoom;

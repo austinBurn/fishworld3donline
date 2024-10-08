@@ -16,7 +16,7 @@ function App() {
     if (effectRan.current) return;
     effectRan.current = true;
 
-    const client = new Client('ws://localhost:2567');
+    const client = new Client('ws://fish.burn.world:2567');
 
     client
       .joinOrCreate('fish_room')
