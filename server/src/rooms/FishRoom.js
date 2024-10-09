@@ -1,12 +1,12 @@
 import { Room } from "@colyseus/core";
 import { State, Fish } from "shared/src/State.js";
 export class FishRoom extends Room {
+
   onCreate(options) {
     console.log('FishRoom created.');
-
     // Set the initial state
     this.setState(new State());
-
+    this.setPatchRate(16.6);
     // Initialize fish positions
     for (let i = 0; i < 5; i++) {
       const fish = new Fish();
