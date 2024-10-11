@@ -8,7 +8,7 @@ export class FishRoom extends Room {
     this.setState(new State());
     this.setPatchRate(16.6);
     // Initialize fish positions
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 24; i++) {
       const fish = new Fish();
       fish.id = `${i}`; // Ensure id is a string
       fish.x = Math.random() * 10 - 5;

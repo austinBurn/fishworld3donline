@@ -7,34 +7,34 @@ function Fish({ position, rotationY = 0 }) {
   return (
 <group position={position} rotation={[0, rotationY, 0]}>
       {/* Body */}
-      <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={[0.5, 32, 32]} /> {/* Main body of the fish */}
+      <mesh scale={[.5,1,2]} position={[0, 0, 0]} >
+        <sphereGeometry args={[0.2, 6, 6]} /> {/* Main body of the fish */}
         <meshStandardMaterial color="orange" />
       </mesh>
       
       {/* Tail */}
-      <mesh position={[0, 0, -.4]} rotation={[Math.PI/2, 0, 0]}>
-        <coneGeometry args={[0.3, 1, 32]} /> {/* Tail of the fish */}
+      <mesh scale={[.1,1,1]} position={[0, 0, -.1]} rotation={[Math.PI/2, 0, 0]}>
+        <coneGeometry args={[0.2, .6, 4]} /> {/* Tail of the fish */}
         <meshStandardMaterial color="orange" />
       </mesh>
       
       {/* Fins */}
-      <mesh position={[0.4, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <coneGeometry args={[0.1, 0.5, 32]} /> {/* Right fin */}
+      <mesh scale={[.1,1,1]} position={[0.12, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI / 8]}>
+        <coneGeometry args={[0.1, 0.2, 4]} /> {/* Right fin */}
         <meshStandardMaterial color="orange" />
       </mesh>
-      <mesh position={[-0.4, 0, 0]} rotation={[0, 0, -Math.PI / 2]}>
-        <coneGeometry args={[0.1, 0.5, 32]} /> {/* Left fin */}
+      <mesh scale={[.1,1,1]} position={[-0.12, 0, 0]} rotation={[Math.PI / 2, 0, -Math.PI / 8]}>
+        <coneGeometry args={[0.1, 0.2, 4]} /> {/* Left fin */}
         <meshStandardMaterial color="orange" />
       </mesh>
       
       {/* Eyes */}
-      <mesh position={[0.2, 0.3, 0.4]}>
-        <sphereGeometry args={[0.05, 16, 16]} /> {/* Right eye */}
+      <mesh position={[0.05, 0.05, 0.32]}>
+        <sphereGeometry args={[0.03, 4, 4]} /> {/* Right eye */}
         <meshStandardMaterial color="black" />
       </mesh>
-      <mesh position={[-0.2, 0.3, 0.4]}>
-        <sphereGeometry args={[0.05, 16, 16]} /> {/* Left eye */}
+      <mesh position={[-0.05, 0.05, 0.32]}>
+        <sphereGeometry args={[0.03, 4, 4]} /> {/* Left eye */}
         <meshStandardMaterial color="black" />
       </mesh>
     </group>
