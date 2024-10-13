@@ -1,7 +1,7 @@
 import configModule from "@colyseus/tools";
 import { monitor } from "@colyseus/monitor";
 import { playground } from "@colyseus/playground";
-import { FishRoom } from "./rooms/FishRoom.js";
+import { FishRoom } from "./FishRoom.js";
 
 const config = configModule.default || configModule;
 
