@@ -1,8 +1,8 @@
 // room.js
 import { Room } from "@colyseus/core";
 import { State } from "shared/src/index.js";
-import { initializeFishes } from "./modules/fishUtils.js";
-import { updateFishes } from "./modules/fishMovement.js";
+import { initTestFish, initTestFood} from "./modules/tankUtils.js";
+//import { updateFishes } from "./modules/fishMovement.js";
 
 export class FishRoom extends Room {
   onCreate(options) {
@@ -12,7 +12,8 @@ export class FishRoom extends Room {
     this.setPatchRate(16.6);
 
     // Initialize fish positions
-    initializeFishes(24, this.state);
+    initTestFish(24, this.state);
+    initTestFood(4, this.state);
 
     // Schedule regular updates
     this.setSimulationInterval((deltaTime) => this.update(deltaTime), 50);
@@ -20,6 +21,7 @@ export class FishRoom extends Room {
 
   update(deltaTime) {
     this.state.updateAllFishes();
+    this.state.updateAllFood();
   }
 
   onJoin(client, options) {

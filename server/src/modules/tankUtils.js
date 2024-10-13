@@ -1,7 +1,7 @@
-// fishUtils.js
-import { Fish } from "shared/src/index.js";
+// tankUtils.js
+import { Fish, Food } from "shared/src/index.js";
 
-export function initializeFishes(numFishes, state) {
+export function initTestFish(numFishes, state) {
   for (let i = 0; i < numFishes; i++) {
     const fish = new Fish();
     fish.id = `${i}`; // Ensure id is a string
@@ -18,3 +18,18 @@ export function initializeFishes(numFishes, state) {
     );
   }
 }
+
+export function initTestFood(numFood, state) {
+  for (let i = 0; i < numFood; i++) {
+    const food = new Food();
+    food.id = `${i}`; // Ensure id is a string
+    food.x = Math.random() * 10 - 5;
+    food.y = Math.random() * 5 - 2.5;
+    food.z = Math.random() * 5 - 2.5;
+    state.peicesOfFood.set(food.id, food); // Add to MapSchema
+    console.log(
+      `Food ${food.id} created at (${food.x.toFixed(2)}, ${food.y.toFixed(2)}, ${food.z.toFixed(2)})`
+    );
+  }
+}
+
