@@ -13,9 +13,9 @@ class Food extends schema.Schema {
   }
 
   updatePosition() {
-    this.y = this.y - 1;
+    this.y = this.y -.03;
     // Keep food within bounds
-    this.y = Math.max(-2.5, Math.min(2.5, this.y));
+    this.y = Math.min(2.5, Math.max(-2.5, this.y));
   }
 }
 

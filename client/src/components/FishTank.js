@@ -4,10 +4,11 @@ import { Plane } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import Fish from './Fish';
+import Food from './Food';
 import Bubble from './Bubble';
 import waterNormalMap from './940-normal.jpg'; // Import a water normal map for the wavy surface
 
-function FishTank({ fishes }) {
+function FishTank({ fishes, peicesOfFood }) {
   const waterSurfaceRef = useRef();
 
   // Animate the water surface to give it a dynamic effect
@@ -18,6 +19,7 @@ function FishTank({ fishes }) {
     }
   });
 
+  console.log(peicesOfFood);
   return (
     <>
       {/* Four glass tank walls */}
@@ -86,6 +88,17 @@ function FishTank({ fishes }) {
           rotationY={fish.rotationY}
         />
       ))}
+
+      {/* Render food from server state */}
+      {peicesOfFood.map((food) => (
+        <Food
+          key={food.id}
+          position={[food.x, food.y, food.z]}
+          rotationY={food.rotationY}
+        />
+      ))}
+
+      
 
       {/* Bubbles */}
       <Bubble position={[0, -2.5, 0]} />

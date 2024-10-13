@@ -8,6 +8,7 @@ import './styles/App.css';
 
 function App() {
   const [fishes, setFishes] = useState({});
+  const [peicesOfFood, setFood] = useState({});
   const roomRef = useRef(null);
   const effectRan = useRef(false); // Prevent multiple effect runs in React 18
 
@@ -34,6 +35,13 @@ function App() {
           });
           //console.log('Updated fishes state:', fishesData);
           setFishes(fishesData);
+
+          const foodData = {};
+          state.peicesOfFood.forEach((food, key) => {
+            foodData[key] = food.toJSON();
+          });
+          setFood(foodData);
+
         });
       })
       .catch((err) => {
@@ -54,7 +62,10 @@ function App() {
       <Canvas camera={{ position: [0, 0, 15], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[0, 10, 5]} intensity={1} />
-        <FishTank fishes={Object.values(fishes)} />
+        <FishTank 
+          fishes={Object.values(fishes)} 
+          peicesOfFood={Object.values(peicesOfFood)} 
+        />
         <OrbitControls />
       </Canvas>
     </div>
