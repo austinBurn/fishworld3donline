@@ -1,8 +1,7 @@
-// room.js
+// FishRoom.js
 import { Room } from "@colyseus/core";
-import { State } from "shared/src/index.js";
-import { initTestFish, initTestFood} from "./modules/tankUtils.js";
-//import { updateFishes } from "./modules/fishMovement.js";
+import { State, Food } from "shared/src/index.js";
+import { initTestFish, initTestFood } from "./modules/tankUtils.js";
 
 export class FishRoom extends Room {
   onCreate(options) {
@@ -17,6 +16,12 @@ export class FishRoom extends Room {
 
     // Schedule regular updates
     this.setSimulationInterval((deltaTime) => this.update(deltaTime), 50);
+
+    // Listen for messages from clients to add food
+    this.onMessage('add_food', (client, data) => {
+      initTestFood(1, this.state);
+      //console.log(`Food added by client ${client.sessionId} at (${food.x}, ${food.y}, ${food.z})`);
+    });
   }
 
   update(deltaTime) {

@@ -3,10 +3,10 @@ import React, { useRef } from 'react';
 import { Plane } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import Fish from './Fish';
-import Food from './Food';
-import Bubble from './Bubble';
-import waterNormalMap from './940-normal.jpg'; // Import a water normal map for the wavy surface
+import FishModel from './Fish';
+import FoodModel from './Food';
+import BubbleModel from './Bubble';
+import waterNormalMap from '../components/940-normal.jpg'; // Import a water normal map for the wavy surface
 
 function FishTank({ fishes, peicesOfFood }) {
   const waterSurfaceRef = useRef();
@@ -19,10 +19,9 @@ function FishTank({ fishes, peicesOfFood }) {
     }
   });
 
-  console.log(peicesOfFood);
   return (
     <>
-      {/* Four glass tank walls */}
+      {/* Four glass tank walls 
       <mesh position={[-5.05, 0, 0]}>
         <boxGeometry args={[0.1, 7, 5]} />
         <meshStandardMaterial color="skyblue" transparent opacity={0.1} />
@@ -39,14 +38,14 @@ function FishTank({ fishes, peicesOfFood }) {
         <boxGeometry args={[10, 7, 0.1]} />
         <meshStandardMaterial color="skyblue" transparent opacity={0.1} />
       </mesh>
-
-      {/* Water box in the middle */}
+*/}
+      {/* Water box in the middle 
       <mesh position={[0, -.5, 0]}>
         <boxGeometry args={[10, 6, 5]} />
         <meshStandardMaterial color="blue" transparent opacity={0.1} />
       </mesh>
-
-      {/* Water surface (dynamic and shiny) */}
+*/}
+      {/* Water surface (dynamic and shiny) 
       <Plane
         args={[10, 5]}
         position={[0, 2.51, 0]} // Positioned at the surface of the water box
@@ -63,7 +62,7 @@ function FishTank({ fishes, peicesOfFood }) {
           opacity={0.8}
         />
       </Plane>
-
+*/}
       <Plane
         args={[10, 5]}
         position={[0, -2.501, 0]}
@@ -82,7 +81,7 @@ function FishTank({ fishes, peicesOfFood }) {
 
       {/* Render fish from server state */}
       {fishes.map((fish) => (
-        <Fish
+        <FishModel
           key={fish.id}
           position={[fish.x, fish.y, fish.z]}
           rotationY={fish.rotationY}
@@ -91,7 +90,7 @@ function FishTank({ fishes, peicesOfFood }) {
 
       {/* Render food from server state */}
       {peicesOfFood.map((food) => (
-        <Food
+        <FoodModel
           key={food.id}
           position={[food.x, food.y, food.z]}
           rotationY={food.rotationY}
@@ -101,9 +100,9 @@ function FishTank({ fishes, peicesOfFood }) {
       
 
       {/* Bubbles */}
-      <Bubble position={[0, -2.5, 0]} />
-      <Bubble position={[1, -2.5, -1]} />
-      <Bubble position={[-1, -2.5, 1]} />
+      <BubbleModel position={[0, -2.5, 0]} />
+      <BubbleModel position={[1, -2.5, -1]} />
+      <BubbleModel position={[-1, -2.5, 1]} />
     </>
   );
 }

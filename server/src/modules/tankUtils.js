@@ -22,7 +22,12 @@ export function initTestFish(numFishes, state) {
 export function initTestFood(numFood, state) {
   for (let i = 0; i < numFood; i++) {
     const food = new Food();
-    food.id = `${i}`; // Ensure id is a string
+     // Ensure id is a string
+    var id = i ;
+    while(state.peicesOfFood.get(id.toString()) != undefined)
+      {id++;}
+    food.id = `${id}`;
+    
     food.x = Math.random() * 10 - 5;
     food.y = Math.random() * 5 - 2.5;
     food.z = Math.random() * 5 - 2.5;

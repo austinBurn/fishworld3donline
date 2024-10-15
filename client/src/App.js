@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Client } from 'colyseus.js';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import FishTank from './components/FishTank';
+import FishTank from './models/FishTank';
 import './styles/App.css';
 
 function App() {
@@ -56,9 +56,21 @@ function App() {
       }
     };
   }, []); // Empty dependency array
+  
+  const handleAddFood = () => {
+    if (roomRef.current) {
+      // Send a message to the server to add a piece of food
+      roomRef.current.send('add_food', {
+        x: Math.random() * 10 - 5,
+        y: Math.random() * 5 - 2.5,
+        z: Math.random() * 5 - 2.5,
+      });
+    }
+  };
 
   return (
     <div className="App">
+      <button onClick={handleAddFood}>Drop Food</button>
       <Canvas camera={{ position: [0, 0, 15], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[0, 10, 5]} intensity={1} />

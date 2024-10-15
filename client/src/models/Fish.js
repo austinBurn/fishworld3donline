@@ -9,23 +9,23 @@ function Fish({ position, rotationY = 0 }) {
       {/* Body */}
       <mesh scale={[.5,1,2]} position={[0, 0, 0]} >
         <sphereGeometry args={[0.2, 6, 6]} /> {/* Main body of the fish */}
-        <meshStandardMaterial color="orange" />
+        <meshStandardMaterial color="salmon" />
       </mesh>
       
       {/* Tail */}
       <mesh scale={[.1,1,1]} position={[0, 0, -.1]} rotation={[Math.PI/2, 0, 0]}>
         <coneGeometry args={[0.2, .6, 4]} /> {/* Tail of the fish */}
-        <meshStandardMaterial color="orange" />
+        <meshStandardMaterial color="salmon" />
       </mesh>
       
       {/* Fins */}
       <mesh scale={[.1,1,1]} position={[0.12, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI / 8]}>
         <coneGeometry args={[0.1, 0.2, 4]} /> {/* Right fin */}
-        <meshStandardMaterial color="orange" />
+        <meshStandardMaterial color="salmon" />
       </mesh>
       <mesh scale={[.1,1,1]} position={[-0.12, 0, 0]} rotation={[Math.PI / 2, 0, -Math.PI / 8]}>
         <coneGeometry args={[0.1, 0.2, 4]} /> {/* Left fin */}
-        <meshStandardMaterial color="orange" />
+        <meshStandardMaterial color="salmon" />
       </mesh>
       
       {/* Eyes */}
